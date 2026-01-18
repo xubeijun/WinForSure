@@ -1,2 +1,2 @@
 # WinForSure
-A mini social app built with Golang + Go-Zero and Kotlin + Jetpack Compose
+Mini social application developed using Golang/Go-Zero (backend) and Kotlin/Jetpack Compose (frontend)
