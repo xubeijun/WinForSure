@@ -1,32 +1,142 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# ==============================================================================
+# 全局通用忽略项
+# ==============================================================================
+
+# 日志文件
+*.log
+logs/
+log/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+*.temp
+
+# 压缩包/归档文件
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# 系统隐藏文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/编辑器通用配置（跨平台）
+.idea/
+.vscode/
+*.swp
+*.swo
+*.iml
+*.iws
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+
+# 环境变量文件（敏感信息）
+.env
+.env.local
+.env.*.local
+
+# ==============================================================================
+# Go-Zero 后端专属忽略项（核心：保留 go.mod/go.sum，仅忽略编译产物/缓存/测试产物）
+# ==============================================================================
+
+# Go 工作区文件（本地多模块开发用，无需提交）
+go.work
+go.work.sum
+
+# Go 编译产物
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-
-# Test binary, built with `go test -c`
-*.test
-
-# Code coverage profiles and other test artifacts
 *.out
+*.test
+*.prof
+
+# 测试/覆盖率/性能分析产物
 coverage.*
 *.coverprofile
 profile.cov
 
-# Dependency directories (remove the comment below to include it)
+# 后端服务编译生成的二进制文件（按微服务目录匹配）
+backend/service/*/cmd/api/api
+backend/service/*/cmd/rpc/rpc
+
+# Go 模块缓存（本地下载的依赖，无需提交）
+go/pkg/
+
+# Go 构建缓存
+go/build/
+
+# Go vendor 目录（可选：若提交 vendor 则注释此行）
 # vendor/
 
-# Go workspace file
-go.work
-go.work.sum
+# ==============================================================================
+# Android 前端专属忽略项（核心：保留 build.gradle/settings.gradle，仅忽略产物/本地配置）
+# ==============================================================================
 
-# env file
-.env
+# Android 构建产物
+android/app/build/
+android/build/
+android/*/build/
+android/*/*/build/
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# Gradle 本地缓存
+android/.gradle/
+android/gradle/caches/
+android/gradle/wrapper/dists/
+
+# 本地环境配置（含 SDK 路径，不同机器不一致）
+android/local.properties
+
+# Android 签名文件（敏感信息，绝对忽略）
+android/*.jks
+android/*.keystore
+android/*.key
+android/keystore.properties
+
+# Android 调试/测试产物
+android/captures/
+android/output.json
+android/navigator/
+android/assetstracker.cache
+
+# Android 崩溃日志
+android/crashlytics-build.properties
+android/fabric.properties
+
+# Gradle 守护进程日志
+android/gradle-daemon.log
+
+# Lint 报告
+android/lint-report.html
+android/lint-results.xml
+
+# ==============================================================================
+# Docker/部署相关忽略项
+# ==============================================================================
+
+# Docker 构建临时文件
+.dockerignore
+
+# Kubernetes 临时配置（若有敏感信息）
+kube/config.local.yaml
+
+# 镜像构建日志
+docker-build.log
+
+# 部署临时脚本
+deploy/tmp/
